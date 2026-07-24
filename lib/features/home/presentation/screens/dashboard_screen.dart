@@ -16,6 +16,7 @@ import '../../../fertilizer/presentation/screens/fertilizer_screen.dart';
 import '../../../market/presentation/screens/market_screen.dart';
 import '../../../schemes/presentation/screens/schemes_screen.dart';
 import '../../../profile/presentation/screens/profile_screen.dart';
+import '../../../crop_calendar/presentation/screens/crop_calendar_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -469,6 +470,19 @@ class HomeOverviewPage extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => const FertilizerScreen()),
+                  );
+                },
+              ),
+              _buildFeatureCard(
+                theme,
+                isDark,
+                emoji: '📅',
+                title: 'Sowing Calendar',
+                subtitle: 'Track crop timeline',
+                color: Colors.teal,
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const CropCalendarScreen()),
                   );
                 },
               ),

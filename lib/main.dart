@@ -16,6 +16,7 @@ import 'features/schemes/presentation/providers/schemes_provider.dart';
 import 'core/theme/theme_provider.dart';
 import 'features/profile/presentation/providers/profile_provider.dart';
 import 'features/onboarding/presentation/screens/splash_screen.dart';
+import 'features/crop_calendar/presentation/providers/crop_calendar_provider.dart';
 
 void main() async {
   // Ensure Flutter engine is initialized
@@ -68,6 +69,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => ProfileProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CropCalendarProvider(),
         ),
       ],
       child: const MyApp(),
