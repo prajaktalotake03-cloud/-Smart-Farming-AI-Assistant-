@@ -99,12 +99,20 @@ class ChatProvider extends ChangeNotifier {
   }
 
   String _generateMockResponse(String query, {bool hasImage = false}) {
-    if (hasImage) {
-      return '📸 [AI Visual Diagnosis Completed]\n\nBased on the leaf structure and spot patterns in your uploaded image, the AI detects symptoms of Early Blight (Alternaria solani).\n\nRecommended Actions:\n1. Prune and destroy the lower affected leaves to prevent spore splash.\n2. Apply a organic copper-based fungicide or neem oil spray early in the evening.\n3. Avoid overhead irrigation; water directly at the soil level.';
-    }
-
     final q = query.toLowerCase();
     
+    if (hasImage) {
+      if (q.contains('seed') || q.contains('grain') || q.contains('sow') || q.contains('wheat') || q.contains('rice')) {
+        return '📸 [AI Seed Identification Completed]\n\nSeed Identified: **Premium Wheat Seeds (Triticum aestivum)**\nConfidence: **94.5%**\n\nSowing Guidelines:\n1. **Optimal Season**: Rabi Season (November - December).\n2. **Sowing Depth**: 3.5 - 5 cm (1.5 - 2 inches) in rows spaced 20-22 cm apart.\n3. **Soil Conditions**: Well-drained loamy or clay loam soil with pH 6.0 - 7.5.\n4. **Germination Period**: Sprouting begins in 5 - 7 Days.\n5. **Moisture Requirements**: Keep soil consistently damp (not flooded) during the initial stage.';
+      }
+      
+      if (q.contains('plant') || q.contains('tree') || q.contains('species') || q.contains('flower') || q.contains('what is this')) {
+        return '📸 [AI Plant Identification Completed]\n\nPlant Species: **Holy Basil / Tulsi (Ocimum tenuiflorum)**\nFamily: **Lamiaceae (Mint Family)**\nHealth Status: **Healthy 🟢 (No visible disease or pest damage)**\n\nCare Guidelines:\n1. **Sunlight**: Requires 4 - 6 hours of bright morning sunlight daily.\n2. **Watering**: Water when topsoil is dry. Do not let soil stay waterlogged.\n3. **Pruning**: Regularly pinch off growing tips to encourage thick, bushy foliage.';
+      }
+      
+      return '📸 [AI Visual Diagnosis Completed]\n\nBased on the leaf structure and leaf spotting patterns in your uploaded image, the AI detects symptoms of **Early Blight (Alternaria solani)**.\n\nRecommended Treatments:\n1. Prune and destroy the lower infected leaves immediately to prevent spore splash.\n2. Apply a copper-based organic fungicide or Neem Oil solution in the evening.\n3. Avoid overhead watering; use drip irrigation to keep leaf surfaces dry.';
+    }
+
     if (q.contains('disease') || q.contains('leaf') || q.contains('spot') || q.contains('blight')) {
       return 'Fungal diseases like Blight or Powdery Mildew thrive in humid conditions. I recommend picking off the affected leaves immediately, reducing overhead watering, and applying a diluted copper fungicide or natural neem oil solution in the evening.';
     }
